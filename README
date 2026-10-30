@@ -1,9 +1,11 @@
-# LYNO · Tarjeta de invitación para Discord
+# DISCORD-ARTS · Tarjeta de invitación para Discord
 
 Generador de tarjetas de invitación en imagen (PNG) hecho con Node.js y [`@napi-rs/canvas`](https://github.com/Brooooooklyn/canvas). Muestra al usuario invitado y a quien lo invitó, cada uno con su avatar, su decoración de avatar y su indicador de estado, sobre un fondo personalizado con desenfoque.
 
-![Ejemplo](./vistarapida/invite2.png)
-![Ejemplo](./vistarapida/invite.png)
+## Vista previa
+
+![Ejemplo 1](./vistarapida/invite.png)
+![Ejemplo 2](./vistarapida/invite2.png)
 
 ## Características
 
