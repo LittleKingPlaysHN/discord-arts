@@ -59,7 +59,12 @@ Se genera un archivo `invite.png` en la misma carpeta del script.
 
 ## Créditos
 
-Este proyecto está inspirado en el estilo visual de [**discord-arts**](https://www.npmjs.com/package/discord-arts), el paquete de npm para generar imágenes de perfil de Discord, en especial en el uso de decoraciones de avatar y el hueco alrededor del indicador de estado. Este repositorio no incluye ni usa el código de `discord-arts`; es una implementación independiente. Todo el crédito por la idea y el diseño original es de sus autores, así que si buscas algo más completo, échale un vistazo.
+- **Estilo visual:** inspirado en [**discord-arts**](https://www.npmjs.com/package/discord-arts), el paquete de npm para generar imágenes de perfil de Discord, en especial en el uso de decoraciones de avatar y el hueco alrededor del indicador de estado. Este repositorio no incluye ni usa su código; es una implementación independiente.
+- **Dibujo de imágenes:** [`@napi-rs/canvas`](https://github.com/Brooooooklyn/canvas).
+- **Fuentes:** descargadas de [DaFont]([https://www.dafont.com/es/](https://www.dafont.com/es/green-matcha.font)).
+- **Decoraciones de avatar:** obtenidas de [Discord Decoration Art](https://discord-decoration.art/).
+
+Todos los derechos de las fuentes, decoraciones y demás recursos pertenecen a sus respectivos autores.
 
 También se usa:
 
