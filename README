@@ -1,0 +1,93 @@
+# LYNO · Tarjeta de invitación para Discord
+
+Generador de tarjetas de invitación en imagen (PNG) hecho con Node.js y [`@napi-rs/canvas`](https://github.com/Brooooooklyn/canvas). Muestra al usuario invitado y a quien lo invitó, cada uno con su avatar, su decoración de avatar y su indicador de estado, sobre un fondo personalizado con desenfoque.
+
+![Ejemplo](./vistarapida/invite2.png)
+![Ejemplo](./vistarapida/invite.png)
+
+## Características
+
+- Avatares circulares con borde y sombra.
+- Una decoración de avatar distinta para cada usuario (estilo `discord-arts`).
+- Indicador de estado (`online`, `dnd`, etc.) con hueco transparente alrededor, como en Discord.
+- Fondo personalizado con desenfoque y capa oscura para que el texto se lea bien.
+- Fuente personalizada para el texto "FUISTE INVITADO POR".
+- Todo configurable desde constantes al inicio del archivo.
+
+## Requisitos
+
+- [Node.js](https://nodejs.org/) 18 o superior
+- npm
+
+## Instalación
+
+```bash
+git clone https://github.com/LittleKingPlaysHN/discord-arts.git
+cd TU_REPOSITORIO
+npm install @napi-rs/canvas
+```
+
+## Estructura de carpetas
+
+```
+.
+├── discord-arts.js            # Script principal
+├── imagenes/
+│   ├── fondo.png       # Fondo personalizado
+│   ├── deco.webp       # Decoración del usuario invitado
+│   ├── deco2.webp      # Decoración de quien invita
+│   ├── online.png      # Iconos de estado
+│   ├── dnd.png
+│   ├── idle.png
+│   └── offline.png
+├── fuentes/
+│   └── fuente.otf      # Fuente para "FUISTE INVITADO POR"
+└── README.md
+```
+
+> Los nombres de los iconos de estado deben coincidir con el valor `status` que le pases a la función (`online`, `dnd`, `idle`, `offline`, etc.).
+
+## Uso
+
+```bash
+node discord-arts.js
+```
+
+Se genera un archivo `invite.png` en la misma carpeta del script.
+
+## Configuración
+
+Todo se ajusta en las constantes del inicio del archivo:
+
+| Constante | Descripción |
+|---|---|
+| `INVITED_AVATAR` / `INVITER_AVATAR` | URL del avatar de cada usuario |
+| `INVITED_DECORATION` / `INVITER_DECORATION` | Archivo de decoración dentro de `imagenes/` (`null` para no usar) |
+| `BACKGROUND_FILENAME` | Imagen de fondo dentro de `imagenes/` (`null` para fondo liso) |
+| `BG_BLUR` | Intensidad del desenfoque del fondo (recomendado 4 a 14) |
+| `BG_DARKEN` | Oscuridad sobre el fondo, de 0 a 1 (recomendado 0.3 a 0.6) |
+| `TITLE_FONT_FILE` | Archivo de fuente dentro de `fuentes/` |
+| `TITLE_FONT_SIZE` | Tamaño de la fuente del título central |
+| `STATUS_GAP` | Espacio vacío alrededor del indicador de estado |
+| `STATUS_ICON_SCALE` | Tamaño del icono de estado (solo el icono, no el hueco) |
+| `STATUS_HOLE_SCALE` | Tamaño base del hueco del indicador |
+| `TEXT_GAP` | Separación vertical entre las 3 líneas de texto |
+
+Los nombres de usuario se cambian en `main()`:
+
+```javascript
+const userInvitado = '@usuario';
+const userInviter = '@usuario2';
+```
+
+## Uso con un bot de Discord
+
+Para usarlo en un bot, convierte el script en una función que reciba los datos reales y devuelva el `buffer` en lugar de guardarlo en disco. Por ejemplo, usando `member.displayAvatarURL({ extension: 'png', size: 512 })` para los avatares y enviando el resultado con un `AttachmentBuilder`.
+
+## Créditos
+
+Este proyecto está inspirado en el estilo visual de [**discord-arts**](https://www.npmjs.com/package/discord-arts), el paquete de npm para generar imágenes de perfil de Discord, en especial en el uso de decoraciones de avatar y el hueco alrededor del indicador de estado. Este repositorio no incluye ni usa el código de `discord-arts`; es una implementación independiente. Todo el crédito por la idea y el diseño original es de sus autores, así que si buscas algo más completo, échale un vistazo.
+
+También se usa:
+
+- [`@napi-rs/canvas`](https://github.com/Brooooooklyn/canvas) para dibujar las imágenes.
